@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>JavaScript Calculator</title>
+
+  <style>
+    h1 {
+      color: rgb(85, 187, 187);
+      text-align: center;
+    }
+    .container {
+      height: 550px;
+      width: 400px;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+        rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+      margin: auto;
+      margin-top: 50px;
+      padding: 10px;
+      border-radius: 30px;
+    }
+
+    #btn {
+      height: 550px;
+      width: 90%;
+      margin: auto;
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(4, 80px);
+      gap: 20px;
+    }
+    #btn > input {
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      font-size: 25px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #btn > input:hover {
+      background-color: lightgray;
+    }
+
+    .display {
+      height: 50px;
+      width: 100%;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+        rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+        rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+      margin: auto;
+      margin-top: 1px;
+      border-radius: 10px;
+    }
+
+    .blk {
+      background-color: #101010;
+      color: rgb(246, 236, 236); 
+      
+
+    } 
+    .blk:hover {
+      background-color: #fef6f6;
+      color: rgb(19, 18, 18); 
+      
+
+    }
+
+    #clear {
+      background-color: orangered;
+      color: white;
+      border-radius: 50%;
+    } 
+    
+    #clear:hover {
+      background-color: rgb(238, 232, 230);
+      color: orangered;
+      border-radius: 50%;
+    } 
+    p{ 
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <h1>Calculator</h1>
+  <div class="container">
+    <div>
+      <input class="display" type="text" name="answer" readonly />
+    </div>
+    <div id="btn">
+      <!-- Display the calculator buttons on the screen. -->
+      <input type="button" value="1" onclick="updateDisplay('1')" />
+      <input type="button" value="2" onclick="updateDisplay('2')" />
+      <input type="button" value="3" onclick="updateDisplay('3')" />
+      <input type="button" class="blk" value="+" onclick="updateDisplay('+')" />
+
+      <input type="button" value="4" onclick="updateDisplay('4')" />
+      <input type="button" value="5" onclick="updateDisplay('5')" />
+      <input type="button" value="6" onclick="updateDisplay('6')" />
+      <input type="button" class="blk" value="-" onclick="updateDisplay('-')" />
+
+      <input type="button" value="7" onclick="updateDisplay('7')" />
+      <input type="button" value="8" onclick="updateDisplay('8')" />
+      <input type="button" value="9" onclick="updateDisplay('9')" />
+      <input type="button" class="blk" value="X" onclick="updateDisplay('X')" />
+
+      <input type="button" id="clear" value="C" onclick="clearDisplay()" />
+      <input type="button" value="0" onclick="updateDisplay('0')" />
+      <input type="button" value="." onclick="updateDisplay('.')" />
+      <input type="button" class="blk" value="/" onclick="updateDisplay('/')" />
+
+      <input type="button" value="←" onclick="backspace()" />
+      <input type="button" value="🙏" onclick="updateDisplay('Thank you')" />
+      <input type="button" class="blk" value="%" onclick="updateDisplay('%')" /> 
+
+      <!-- When we click on the '=' button, the evaluateExpression() function evaluates the expression and displays the result on the calculator screen. -->
+      <input
+        type="button"
+        class="blk"
+        value="="
+        onclick="evaluateExpression()"
+      />
+      <br />
+    </div>
+  </div>
+
+  <script>
+    // Function to update the display with button values
+    function updateDisplay(value) {
+      document.getElementsByName("answer")[0].value += value;
+    }
+
+    // Function to clear the display
+    function clearDisplay() {
+      document.getElementsByName("answer")[0].value = "";
+    }
+
+    // Function to remove the last character from the display
+    function backspace() {
+      var display = document.getElementsByName("answer")[0].value;
+      document.getElementsByName("answer")[0].value = display.slice(0, -1);
+    }
+
+    // Function to evaluate the expression and display the result
+    function evaluateExpression() {
+      var display = document.getElementsByName("answer")[0].value;
+      var result = eval(display);
+      document.getElementsByName("answer")[0].value = result;
+    }
+  </script> 
+  <p><strong>Made by Ayushi Kalpande</strong> 🎓</p>
+</body>
+</html>
